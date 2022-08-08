@@ -237,7 +237,28 @@ connection.onDocumentSymbol((params): DocumentSymbol[] => {
     Range.create(Position.create(0, 0), Position.create(0, 0)),
     Range.create(Position.create(0, 0), Position.create(0, 0))
   );
+  const testSymbolChildren: DocumentSymbol[] = [];
+  testSymbol.children = testSymbolChildren;
   results.push(testSymbol);
+
+  const childSymbol = DocumentSymbol.create(
+    "child 1",
+    "LSP test document child 1",
+    SymbolKind.Class,
+    Range.create(Position.create(0, 0), Position.create(0, 0)),
+    Range.create(Position.create(0, 0), Position.create(0, 0))
+  );
+  testSymbolChildren.push(childSymbol);
+
+  const childSymbol2 = DocumentSymbol.create(
+    "child 2",
+    "LSP test document child 2",
+    SymbolKind.Class,
+    Range.create(Position.create(0, 0), Position.create(0, 0)),
+    Range.create(Position.create(0, 0), Position.create(0, 0))
+  );
+  results.push(childSymbol2);
+
   return results;
 });
 
